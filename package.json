@@ -13,10 +13,10 @@
   },
   "license": "ISC",
   "author": "Aditya Vaishnav",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "start":"parcel index.html",
-    "build":"parcel build index.html",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
-  "browserlist":[
-    "last 2 version"
+  "browserslist": [
+    "last 2 versions"
   ]
 }
