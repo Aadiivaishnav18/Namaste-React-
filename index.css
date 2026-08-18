@@ -29,7 +29,6 @@
 .res-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
     padding: 0;
 }
@@ -38,6 +37,7 @@
     width: 200px;
     margin: 5px;
     padding: 5px;
+    background-color: rgba(245, 239, 239, 0.758);
 }
 
 .res-cart:hover {
