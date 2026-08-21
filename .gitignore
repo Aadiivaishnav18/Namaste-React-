@@ -1,3 +1,20 @@
-/node_modules
-/dist
-.parcel-cache
+node_modules/
+.parcel-cache/
+dist/
+
+// Namaste-Food 
+
+# /* 
+*-Header 
+*   - Logo name - Namaste Food 
+*  -list-[Home, About Us, Contact Us , Cart]
+
+*-Body
+*  -Search 
+*  -Restruarent Section
+*     -Restrurent Cards - 8 (each row-4)
+
+* -Footer 
+*   -Copyright 
+*  -links etc:
+# */
