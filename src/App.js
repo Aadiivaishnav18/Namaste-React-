@@ -6,10 +6,6 @@ import Body from "./components/Body";
 
 
 // Body //
-
-
-
-
 const AppLayout = () => {
     return (
         <div id="app" >
