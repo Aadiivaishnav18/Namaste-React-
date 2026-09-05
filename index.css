@@ -84,3 +84,12 @@ margin-right: 20px;
 padding: 0px 20px;
 cursor: pointer;
 }
+
+.filter{
+    display: flex;
+}
+
+.btn-search{
+
+    margin: 2px;
+}
