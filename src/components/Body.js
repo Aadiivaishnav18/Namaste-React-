@@ -37,7 +37,7 @@ const Body = () => {
                     <button
                         className="btn-search"
                         onClick={() => {
-                            const filteredRestaurant = resList.filter((res) =>
+                            const filteredRestaurant = listOfRestuarant.filter((res) =>
                                 res.data.name
                                     .toLowerCase()
                                     .includes(searchText.toLowerCase())
@@ -56,7 +56,6 @@ const Body = () => {
                         const filteredList = resList.filter(
                             (res) => res.data.rating > 4.5
                         );
-
                         setListOfRestuarant(filteredList);
                     }}
                 >
