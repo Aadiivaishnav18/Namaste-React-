@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     border: 1px solid black;
+    padding: 10px 20px;
 }
 
 .logo {
@@ -15,6 +16,7 @@
 
 .list-items > ul {
     display: flex;
+    align-items: center;
     font-size: 18px;
     list-style: none;
     margin: 0;
@@ -26,27 +28,58 @@
     margin: 10px;
 }
 
+/* Filter + Search */
+
+.filter {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.search {
+    padding: 20px;
+}
+
+.search-box {
+    padding: 8px;
+    width: 170px;
+}
+
+.btn-search {
+    margin: 2px;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.filter-res {
+    margin: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Restaurant Container */
+
 .res-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 0;
+    padding: 0 15px;
+    justify-content: flex-start;
 }
+/* Restaurant Card */
 
 .res-cart {
     width: 200px;
     margin: 5px;
     padding: 5px;
     background-color: rgba(245, 239, 239, 0.758);
+    transition: 0.2s;
 }
 
 .res-cart:hover {
     border: 1px solid black;
     cursor: pointer;
-}
-
-.search {
-    padding: 20px;
+    transform: scale(1.02);
 }
 
 .res-logo {
@@ -60,36 +93,51 @@
     margin: 8px 0;
 }
 
-.filter-res{
-    margin: 20px;
+.text p {
+    margin: 8px 0;
+}
+
+/* Login Button */
+
+.login {
+    margin-right: 20px;
+    padding: 0px 20px;
     cursor: pointer;
 }
 
-.shimmer-container{
-  display: flex;
-  flex-wrap: wrap;
+/* Shimmer */
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.shimmer-card{
-
+.shimmer-card {
     background-color: #f0f0f0;
     margin: 20px;
     width: 200px;
     height: 350px;
-
 }
 
-.login{
-margin-right: 20px;
-padding: 0px 20px;
-cursor: pointer;
-}
+/* Responsive */
 
-.filter{
-    display: flex;
-}
+@media (max-width: 768px) {
 
-.btn-search{
+    .header {
+        flex-direction: column;
+    }
 
-    margin: 2px;
+    .list-items > ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter {
+        flex-wrap: wrap;
+    }
+
+    .res-container {
+        justify-content: center;
+    }
 }

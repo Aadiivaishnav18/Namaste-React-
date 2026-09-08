@@ -1,25 +1,39 @@
 import { CARD_URL } from "../utils/constant";
 
 const RestrurantCard = ({ resData }) => {
-    const { name, image, cuisines, rating } = resData.data;
+
+    const {
+        name,
+        cloudinaryImageId,
+        cuisines,
+        avgRating,
+        costForTwo,
+        areaName
+    } = resData.info;
+
     return (
-        <>
-            <div className="res-cart">
-                <img
-                    className="res-logo"
-                    alt={name}
-                    src={CARD_URL + image}
-                />
-                <div className="text">
-                    <h3>{name}</h3>
-                    <h4>{cuisines.join(", ")} </h4>
-                    <h4>{rating} 🌟</h4>
-                </div>
+        <div className="res-cart">
+
+            <img
+                className="res-logo"
+                src={CARD_URL + cloudinaryImageId}
+                alt={name}
+            />
+
+            <div className="text">
+                <h3>{name}</h3>
+
+                <h4>⭐ {avgRating}</h4>
+
+                <h4>{costForTwo}</h4>
+
+                <p>{cuisines?.join(", ")}</p>
+
+                <p>{areaName}</p>
             </div>
 
-
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default RestrurantCard;
