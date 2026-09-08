@@ -187,12 +187,11 @@
     border-radius: 8px;
 }
 
-
 /* =========================
    Responsive
 ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
     .header {
         flex-direction: column;
@@ -216,21 +215,5 @@
 
     .res-container {
         justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .search-box {
-        width: 160px;
-    }
-
-    .res-cart,
-    .res-logo {
-        width: 100%;
-    }
-
-    .res-logo {
-        height: 200px;
     }
 }
