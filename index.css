@@ -1,13 +1,20 @@
+/* =========================
+   Header
+========================= */
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #ddd;
     padding: 10px 20px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .logo {
     width: 120px;
+    object-fit: contain;
 }
 
 .list-items {
@@ -25,67 +32,109 @@
 
 .list-items > ul > li {
     padding: 10px;
-    margin: 10px;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-/* Filter + Search */
+.list-items > ul > li:hover {
+    color: #ff5200;
+}
+
+
+/* =========================
+   Filter + Search
+========================= */
 
 .filter {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    justify-content: space-between;
+    padding: 15px 20px;
 }
 
 .search {
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .search-box {
-    padding: 8px;
-    width: 170px;
+    padding: 9px 12px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: #ff5200;
 }
 
 .btn-search {
     margin: 2px;
-    padding: 7px 12px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5200;
+    color: white;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-search:hover {
+    background: #e04800;
 }
 
 .filter-res {
-    margin: 20px;
+    margin: 10px 20px;
     padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: pointer;
+    background: white;
 }
 
-/* Restaurant Container */
+
+/* =========================
+   Restaurant Container
+========================= */
 
 .res-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 0 15px;
+    padding: 0 20px;
     justify-content: flex-start;
 }
-/* Restaurant Card */
+
+
+/* =========================
+   Restaurant Card
+========================= */
 
 .res-cart {
     width: 200px;
     margin: 5px;
-    padding: 5px;
-    background-color: rgba(245, 239, 239, 0.758);
-    transition: 0.2s;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
 }
 
 .res-cart:hover {
-    border: 1px solid black;
     cursor: pointer;
-    transform: scale(1.02);
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .res-logo {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 6px;
 }
 
 .text h3,
@@ -95,37 +144,59 @@
 
 .text p {
     margin: 8px 0;
+    color: #555;
 }
 
-/* Login Button */
+
+/* =========================
+   Login Button
+========================= */
 
 .login {
     margin-right: 20px;
-    padding: 0px 20px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5200;
+    color: white;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-/* Shimmer */
+.login:hover {
+    background: #e04800;
+}
+
+
+/* =========================
+   Shimmer
+========================= */
 
 .shimmer-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 0 20px;
 }
 
 .shimmer-card {
     background-color: #f0f0f0;
-    margin: 20px;
+    margin: 20px 5px;
     width: 200px;
     height: 350px;
+    border-radius: 8px;
 }
 
-/* Responsive */
+
+/* =========================
+   Responsive
+========================= */
 
 @media (max-width: 768px) {
 
     .header {
         flex-direction: column;
+        gap: 10px;
     }
 
     .list-items > ul {
@@ -133,11 +204,33 @@
         justify-content: center;
     }
 
+    .list-items > ul > li {
+        margin: 5px;
+    }
+
     .filter {
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
 
     .res-container {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .search-box {
+        width: 160px;
+    }
+
+    .res-cart,
+    .res-logo {
+        width: 100%;
+    }
+
+    .res-logo {
+        height: 200px;
     }
 }
