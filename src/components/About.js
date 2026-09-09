@@ -1,7 +1,7 @@
 
-const About = ()=>{
+const About = () => {
 
-    return(
+    return (
 
         <div>
             <h1>About</h1>
