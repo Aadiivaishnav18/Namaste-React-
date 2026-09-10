@@ -1,5 +1,6 @@
 import RestrurantCard from "./RestaurantCards";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
@@ -8,34 +9,34 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
 
     const fetchData = async () => {
-    const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9124&lng=75.7873&page_type=DESKTOP_WEB_LISTING"
-    );
+        const data = await fetch(
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9124&lng=75.7873&page_type=DESKTOP_WEB_LISTING"
+        );
 
-    const json = await data.json();
+        const json = await data.json();
 
-    const restaurants =
-        json?.data?.cards
-            ?.map(
-                (card) =>
-                    card?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            )
-            ?.filter(Boolean)
-            ?.flat() || [];
+        const restaurants =
+            json?.data?.cards
+                ?.map(
+                    (card) =>
+                        card?.card?.card?.gridElements?.infoWithStyle
+                            ?.restaurants
+                )
+                ?.filter(Boolean)
+                ?.flat() || [];
 
-    // Remove duplicate restaurants
-    const uniqueRestaurants = Array.from(
-        new Map(
-            restaurants.map((restaurant) => [
-                restaurant.info.id,
-                restaurant
-            ])
-        ).values()
-    );
+        const uniqueRestaurants = Array.from(
+            new Map(
+                restaurants.map((restaurant) => [
+                    restaurant.info.id,
+                    restaurant,
+                ])
+            ).values()
+        );
 
-    setListOfRestuarant(uniqueRestaurants);
-    setFilteredList(uniqueRestaurants);
-};
+        setListOfRestuarant(uniqueRestaurants);
+        setFilteredList(uniqueRestaurants);
+    };
 
     useEffect(() => {
         fetchData();
@@ -98,12 +99,22 @@ const Body = () => {
 
             <div className="res-container">
 
-{filteredList.map((restaurant, index) => (
-    <RestrurantCard
-        key={`${restaurant.info.id}-${index}`}
-        resData={restaurant}
-    />
-))}
+                {filteredList.map((restaurant) => (
+
+                    <Link
+                        key={restaurant.info.id}
+                        to={`/restaurantmenu/${restaurant.info.id}`}
+                        className="restaurant-link"
+                    >
+
+                        <RestrurantCard
+                            resData={restaurant}
+                        />
+
+                    </Link>
+
+                ))}
+
             </div>
 
         </div>
