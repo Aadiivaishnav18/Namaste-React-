@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {Restaurant_Menu} from '../utils/constant'
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
@@ -9,8 +10,7 @@ const RestaurantMenu = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
-                const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.9124&lng=75.7873&restaurantId=${resId}`;
-
+                const url =  Restaurant_Menu(resId);
                 const response = await fetch(url);
 
                 console.log("STATUS:", response.status);
