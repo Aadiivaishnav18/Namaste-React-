@@ -13,6 +13,8 @@ const About = () => {
                 location={"Jaipur"}
                 contact={"1234567890"}
              />
+
+ 
         </div>
     )
 }

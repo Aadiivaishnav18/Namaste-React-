@@ -1,7 +1,7 @@
 import { use, useState } from "react";
 const User = ({ name, location, contact }) => {
 
-    const [count] = useState(0);
+    const [count] = useState();
     const [count2] = useState(1);
     return (
         <div className="user-card">
