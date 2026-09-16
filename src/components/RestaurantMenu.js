@@ -1,71 +1,39 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {Restaurant_Menu} from '../utils/constant'
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
 
-    const [data, setData] = useState(null);
+    // Custom Hook//
+    const resInfo = useRestaurantMenu(resId);
 
-    useEffect(() => {
-        const fetchMenu = async () => {
-            try {
-                const url =  Restaurant_Menu(resId);
-                const response = await fetch(url);
+    if (resInfo === null) return <Shimmer />;
 
-                console.log("STATUS:", response.status);
+    const { name, cuisines, costForTwoMessage } =
+        resInfo?.cards[0]?.card?.card?.info;
 
-                const text = await response.text();
-
-                console.log("RESPONSE:", text);
-
-                if (!text.trim()) {
-                    setData({
-                        error: "Swiggy API returned empty response",
-                    });
-                    return;
-                }
-
-                const json = JSON.parse(text);
-
-                console.log("JSON:", json);
-
-                setData(json);
-            } catch (error) {
-                console.log("FETCH ERROR:", error);
-
-                setData({
-                    error: error.message,
-                });
-            }
-        };
-
-        fetchMenu();
-    }, [resId]);
-
-    if (!data) {
-        return <h1>Loading...</h1>;
-    }
-
-    if (data.error) {
-        return (
-            <div>
-                <h1>API Error</h1>
-                <p>{data.error}</p>
-                <p>Restaurant ID: {resId}</p>
-            </div>
-        );
-    }
+    const { itemCards } =
+        resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
     return (
-        <div>
-            <h1>Restaurant Menu</h1>
+        <div className="menu">
+            <h1>{name}</h1>
 
-            <pre>
-                {JSON.stringify(data, null, 2)}
-            </pre>
+            <p>
+                {cuisines.join(", ")} - {costForTwoMessage}
+            </p>
+
+            <h2>Menu</h2>
+
+            <ul>
+                {itemCards.map((item) => (
+                    <li key={item.card.info.id}>
+                        {item.card.info.name}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
-
 export default RestaurantMenu;
