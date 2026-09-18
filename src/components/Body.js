@@ -9,7 +9,6 @@ const Body = () => {
     const [filteredList, setFilteredList] = useState([]);
     const [searchText, setSearchText] = useState("");
 
-    //==============================Checking Online Status========================//
     const onlineStatus = useOnlineStatus();
 
     const fetchData = async () => {
@@ -42,36 +41,33 @@ const Body = () => {
         setFilteredList(uniqueRestaurants);
     };
 
-
     useEffect(() => {
         fetchData();
     }, []);
+
+    if (onlineStatus === false) {
+        return (
+            <h1>
+                Looks like you're offline!! Please Check your Internet
+                Connection
+            </h1>
+        );
+    }
 
     if (listOfRestuarant.length === 0) {
         return <Shimmer />;
     }
 
-    // Online status 
-    if (onlineStatus === false) {
-        return (
-            <h1> Looks like you're offline!! Please Check your Internet Connection</h1>
-        )
-    }
-
-
-
-
-
     return (
-        <div id="body">
+        <div id="body" className="min-h-screen bg-gray-50">
 
-            <div className="filter flex">
+            <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
 
-                <div className="search m-4 p-4 ">
+                <div className="flex items-center gap-2">
 
                     <input
                         type="text"
-                        className="search-box border-solid border-black  p-0.5 m-3 border-solid"
+                        className="w-64 rounded-lg border border-gray-300 bg-white px-4 py-2 outline-none focus:border-orange-400"
                         value={searchText}
                         onChange={(e) => {
                             setSearchText(e.target.value);
@@ -80,7 +76,7 @@ const Body = () => {
                     />
 
                     <button
-                        className="btn-search  bg-orange-400 px-5 py-2 cursor-pointer text-white  "
+                        className="cursor-pointer rounded-lg bg-orange-500 px-5 py-2 font-medium text-white hover:bg-orange-600"
                         onClick={() => {
                             const filteredRestaurant =
                                 listOfRestuarant.filter((res) =>
@@ -97,41 +93,32 @@ const Body = () => {
 
                 </div>
 
-                <div className="px-4 py-2 flex items-center text-white">
-                    <button
-                        className=" bg-orange-400  px-4 py-1 cursor-pointer  hover:bg-amber-600"
-                        onClick={() => {
-                            const filteredRestaurant =
-                                listOfRestuarant.filter(
-                                    (res) => res.info.avgRating > 4.2
-                                );
+                <button
+                    className="cursor-pointer rounded-lg bg-orange-500 px-5 py-2 font-medium text-white hover:bg-orange-600"
+                    onClick={() => {
+                        const filteredRestaurant =
+                            listOfRestuarant.filter(
+                                (res) => res.info.avgRating > 4.2
+                            );
 
-                            setFilteredList(filteredRestaurant);
-                        }}
-                    >
-                        Top Rated Restaurants
-                    </button>
-
-                </div>
+                        setFilteredList(filteredRestaurant);
+                    }}
+                >
+                    Top Rated Restaurants
+                </button>
 
             </div>
 
-            <div className="res-container">
+            <div className="grid grid-cols-1 gap-5 px-6 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
                 {filteredList.map((restaurant) => (
-
                     <Link
                         key={restaurant.info.id}
                         to={`/restaurantmenu/${restaurant.info.id}`}
-                        className="restaurant-link"
+                        className="block"
                     >
-
-                        <RestrurantCard
-                            resData={restaurant}
-                        />
-
+                        <RestrurantCard resData={restaurant} />
                     </Link>
-
                 ))}
 
             </div>
