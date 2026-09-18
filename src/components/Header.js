@@ -11,50 +11,56 @@ const Header = () => {
     return (
 
 
-        <div className="header">
+        <div className=" flex  justify-between  bg-orange-400 shadow-lg  m-2 p-2 ">
+
             <div className="logo-image">
-                <img className="logo" src={LOGO_URL} alt="logo" />
+                <img className=" w-32 h-32 m-2 p-2  " src={LOGO_URL} alt="logo" />
             </div>
 
-            <div className="list-items">
-                <ul>
-                    <li>
+            <div className="flex items-center">
+                <ul className="flex m-4 p-4 gap-4 text-white  ">
+                    <li className=" px-2 cursor-pointer hover:text-black">
                         Online Status: {onlineStatus ? "✅" : "🔴"}
                     </li>
-                    <li>
+
+                    <li className="px-2 cursor-pointer hover:text-black">
                         <Link to="/"> Home</Link>
                     </li>
 
-                    <li>
+                    <li className="px-2 cursor-pointer hover:text-black">
                         <Link to="/about">
                             About Us</Link>
                     </li>
 
-                    <li>
+                    <li className="px-2 cursor-pointer hover:text-black">
                         <Link to="/contact">
                             Contact Us
                         </Link>
                     </li>
 
 
-                    <li>
+                    <li className="px-2 cursor-pointer hover:text-black">
                         <Link to="/grocery">
                             Grocery
                         </Link>
                     </li>
 
-                    <li>
+                    <li className="px-2 cursor-pointer  hover:text-black">
                         Cart
                     </li>
-                    <button className="login"
-                        onClick={() => {
 
-                            btnNameReact === "Login"
-                                ? setbtnNameReact("Logout")
-                                : setbtnNameReact("Login")
-                        }}
-                    >{btnNameReact}</button>
                 </ul>
+
+                                    <div className="  flex items-center border-black  p-1 mr-2 bg-white hover:bg-yellow-50 shadow-2xl">
+                        <button className="px-2 cursor-pointer  hover:text-black"
+                            onClick={() => {
+
+                                btnNameReact === "Login"
+                                    ? setbtnNameReact("Logout")
+                                    : setbtnNameReact("Login")
+                            }}
+                        >{btnNameReact}</button>
+                    </div>
             </div>
         </div>
     )
