@@ -1,4 +1,4 @@
-import RestrurantCard from "./RestaurantCards";
+import RestrurantCard, { withRestaurentLabel } from "./RestaurantCards";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -11,9 +11,13 @@ const Body = () => {
 
     const onlineStatus = useOnlineStatus();
 
+    console.log(listOfRestuarant);
+
+    const RestrurantCardPromoted = withRestaurentLabel(RestrurantCard);
+
     const fetchData = async () => {
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.976056&lng=72.60176249999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9124&lng=75.7873&page_type=DESKTOP_WEB_LISTING"
         );
 
         const json = await data.json();
@@ -117,7 +121,12 @@ const Body = () => {
                         to={`/restaurantmenu/${restaurant.info.id}`}
                         className="block"
                     >
-                        <RestrurantCard resData={restaurant} />
+                        {
+                            restaurant.info.promoted ?
+                                (<RestrurantCardPromoted resData={restaurant} />) :
+                                (<RestrurantCard resData={restaurant} />)
+                        }
+
                     </Link>
                 ))}
 

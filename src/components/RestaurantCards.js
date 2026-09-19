@@ -11,6 +11,8 @@ const RestrurantCard = ({ resData }) => {
         areaName
     } = resData.info;
 
+
+
     return (
         <div className="h-full overflow-hidden rounded-xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl p-2 m-2">
 
@@ -47,5 +49,18 @@ const RestrurantCard = ({ resData }) => {
         </div>
     );
 };
+
+ export const withRestaurentLabel=(RestaurantCards) =>{
+
+    return (props) =>{
+
+        return(
+            <div className="relative m-2 ">
+                <label className="absolute left-4 top-4 z-10 rounded-md bg-black px-3 py-1 text-xs font-semibold text-white shadow-md">Promoted</label>
+                <RestaurantCards  {...props}/>
+            </div>
+        )
+    }
+}
 
 export default RestrurantCard;
