@@ -56,7 +56,8 @@ const RestrurantCard = ({ resData }) => {
 
         return(
             <div className="relative m-2 ">
-                <label className="absolute left-4 top-4 z-10 rounded-md bg-black px-3 py-1 text-xs font-semibold text-white shadow-md">Promoted</label>
+                <label className="absolute bg-black m-2 p-2 text-white rounded-b-xl">
+                    Promoted</label>
                 <RestaurantCards  {...props}/>
             </div>
         )
