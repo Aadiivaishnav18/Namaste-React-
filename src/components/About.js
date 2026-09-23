@@ -1,6 +1,7 @@
 
 import User from './User';
 import UserClass from './UserClass';
+import userContext from '../utils/userContext';
 
 const About = () => {
 
@@ -14,7 +15,11 @@ const About = () => {
                 contact={"1234567890"}
              />
 
- 
+ <div>
+  LoggedInUser:  <userContext.Consumer>
+        {({loggedInUser})=> <h1 className="font-bold text-gray-800  text-3xl">{loggedInUser}</h1>}
+    </userContext.Consumer>
+ </div>
         </div>
     )
 }

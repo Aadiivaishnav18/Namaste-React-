@@ -1,12 +1,15 @@
 import { LOGO_URL } from "../utils/constant";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Header = () => {
     const [btnNameReact, setbtnNameReact] = useState("Login");
 
     const onlineStatus = useOnlineStatus();
+
+    const { loggedInUser } = useContext(userContext);
 
     return (
 
@@ -51,16 +54,25 @@ const Header = () => {
 
                 </ul>
 
-                                    <div className="  flex items-center border-black  p-1 mr-2 bg-white hover:bg-yellow-50 shadow-2xl">
-                        <button className="px-2 cursor-pointer  hover:text-black"
-                            onClick={() => {
+                <div className="  flex items-center border-black  p-1 mr-2 bg-white hover:bg-yellow-50 shadow-2xl">
+                    <button className="px-2 cursor-pointer  hover:text-black"
+                        onClick={() => {
 
-                                btnNameReact === "Login"
-                                    ? setbtnNameReact("Logout")
-                                    : setbtnNameReact("Login")
-                            }}
-                        >{btnNameReact}</button>
-                    </div>
+                            btnNameReact === "Login"
+                                ? setbtnNameReact("Logout")
+                                : setbtnNameReact("Login")
+                        }}
+                    >{btnNameReact}</button>
+
+
+                </div>
+                <ul>
+                    <li className="px-2 cursor-pointer  hover:text-black text-white text-xl">
+                        {loggedInUser}
+                    </li>
+
+                </ul>
+
             </div>
         </div>
     )

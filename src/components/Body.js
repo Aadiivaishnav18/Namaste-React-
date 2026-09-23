@@ -1,8 +1,9 @@
 import RestrurantCard, { withRestaurentLabel } from "./RestaurantCards";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Body = () => {
     const [listOfRestuarant, setListOfRestuarant] = useState([]);
@@ -10,14 +11,14 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
 
     const onlineStatus = useOnlineStatus();
-
-    console.log(listOfRestuarant);
+    //User Context Authentication
+      const {loggedInUser, setUserName} = useContext(userContext);
 
     const RestrurantCardPromoted = withRestaurentLabel(RestrurantCard);
 
     const fetchData = async () => {
         const data = await fetch(
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9124&lng=75.7873&page_type=DESKTOP_WEB_LISTING"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9124&lng=75.7873&page_type=DESKTOP_WEB_LISTING"
         );
 
         const json = await data.json();
@@ -62,6 +63,8 @@ const Body = () => {
         return <Shimmer />;
     }
 
+  
+
     return (
         <div id="body" className="min-h-screen bg-gray-50">
 
@@ -97,19 +100,28 @@ const Body = () => {
 
                 </div>
 
-                <button
-                    className="cursor-pointer rounded-lg bg-orange-500 px-5 py-2 font-medium text-white hover:bg-orange-600"
-                    onClick={() => {
-                        const filteredRestaurant =
-                            listOfRestuarant.filter(
-                                (res) => res.info.avgRating > 4.2
-                            );
+                <div>
+                    <button
+                        className="cursor-pointer rounded-lg bg-orange-500 px-5 py-2 font-medium text-white hover:bg-orange-600"
+                        onClick={() => {
+                            const filteredRestaurant =
+                                listOfRestuarant.filter(
+                                    (res) => res.info.avgRating > 4.2
+                                );
 
-                        setFilteredList(filteredRestaurant);
-                    }}
-                >
-                    Top Rated Restaurants
-                </button>
+                            setFilteredList(filteredRestaurant);
+                        }}
+                    >
+                        Top Rated Restaurants
+                    </button>
+                </div>
+
+                   <div>
+                <label>UserName: </label>
+                    <input className="w-64 rounded-lg border border-black-300 bg-white px-4 py-2 outline-none" 
+                    value={loggedInUser}
+                     onChange={(e)=>setUserName(e.target.value)}></input>                
+                </div>
 
             </div>
 
