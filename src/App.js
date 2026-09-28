@@ -14,16 +14,14 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense, useEffect, useState } from "react";
 import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // import Grocery from "./src/components/Grocery";
 //===================================Dynamic Bundling , Lazy loading==============================//
 const Grocery = lazy(() => import("./components/Grocery"));
 
 // Use User Context - for authentication 
-
-
-
-
 const AppLayout = () => {
 
 
@@ -38,13 +36,15 @@ useEffect(() => {
 },[])
     return (
         // Here We overright the default value //
-        <userContext.Provider value={{loggedInUser: userName, setUserName}}>
+      <Provider store={appStore}>
+      <userContext.Provider value={{loggedInUser: userName, setUserName}}>
 
             <div id="app">
                 <Header />
                 <Outlet />
             </div>
         </userContext.Provider>
+        </Provider>
 
     );
 };

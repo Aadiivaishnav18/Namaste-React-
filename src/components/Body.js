@@ -12,7 +12,7 @@ const Body = () => {
 
     const onlineStatus = useOnlineStatus();
     //User Context Authentication
-      const {loggedInUser, setUserName} = useContext(userContext);
+    const { loggedInUser, setUserName } = useContext(userContext);
 
     const RestrurantCardPromoted = withRestaurentLabel(RestrurantCard);
 
@@ -63,7 +63,7 @@ const Body = () => {
         return <Shimmer />;
     }
 
-  
+
 
     return (
         <div id="body" className="min-h-screen bg-gray-50">
@@ -101,6 +101,14 @@ const Body = () => {
                 </div>
 
                 <div>
+                    <label>UserName: </label>
+                    <input className="w-64 rounded-lg border border-black-300 bg-white px-4 py-2 outline-none"
+                        value={loggedInUser}
+                        onChange={(e) => setUserName(e.target.value)}></input>
+                </div>
+
+
+                <div>
                     <button
                         className="cursor-pointer rounded-lg bg-orange-500 px-5 py-2 font-medium text-white hover:bg-orange-600"
                         onClick={() => {
@@ -116,12 +124,6 @@ const Body = () => {
                     </button>
                 </div>
 
-                   <div>
-                <label>UserName: </label>
-                    <input className="w-64 rounded-lg border border-black-300 bg-white px-4 py-2 outline-none" 
-                    value={loggedInUser}
-                     onChange={(e)=>setUserName(e.target.value)}></input>                
-                </div>
 
             </div>
 

@@ -1,5 +1,3 @@
-
-import User from './User';
 import UserClass from './UserClass';
 import userContext from '../utils/userContext';
 
