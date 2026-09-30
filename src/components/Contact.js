@@ -4,7 +4,17 @@ const Contact = () => {
   return (
     <div>
    
-   <h1>Contact Us Page</h1>
+   <h1 className="font-bold text-3xl m-2 p-2">Contact Us Page</h1>
+
+   <form>
+    <input type="text" placeholder="Name" className="border border-black m-2 p-2 " />
+    <button className="border border-black m-2 p-2 bg-gray-100 cursor-pointer " >Submit</button>
+    <br/>
+    <input type="text" placeholder="Email" className="border border-black m-2 p-2 " />
+     <button className="border border-black m-2 p-2 bg-gray-100 cursor-pointer " >Submit</button>
+
+    
+   </form>
 
     </div>
   )
