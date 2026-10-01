@@ -5,7 +5,7 @@ import { act } from "react";
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: ["burger", "pizza"] // take the dummy data for now because due to the api call we are not able to get the data from the api so we are taking the dummy data for now.
+        items: [] // take the dummy data for now because due to the api call we are not able to get the data from the api so we are taking the dummy data for now.
     },
     // this is a object which contains all the reducers which we want to create for this slice whicha are mutiples small functions 
     reducers: {
