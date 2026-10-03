@@ -74,6 +74,7 @@ const Body = () => {
 
                     <input
                         type="text"
+                        data_testid = "searchInput"// used for the testing (Help from the Jest)
                         className="w-64 rounded-lg border border-gray-300 bg-white px-4 py-2 outline-none focus:border-orange-400"
                         value={searchText}
                         onChange={(e) => {
